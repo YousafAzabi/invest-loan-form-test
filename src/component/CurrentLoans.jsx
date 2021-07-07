@@ -11,7 +11,10 @@ const CurrentLoans = () => {
     <div>
       <h1>Current Loan</h1>
       {data.loans.map(loan => <Loan loan={loan} />)}
-      <div>{`Total Available: ${totalAvailable}`}</div>
+      <div className="total-amount-available">
+        Total Amount Available for Invesment:
+        <strong>{` £${totalAvailable.toLocaleString()}`}</strong>
+      </div>
     </div>
   );
 }

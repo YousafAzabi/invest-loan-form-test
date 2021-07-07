@@ -2,8 +2,8 @@ import React from 'react';
 
 const Loan = ({ loan }) => {
   return (
-    <div>
-      <div>{loan.title}</div>
+    <div className="loan-container">
+      <div className="loan-title">{loan.title}</div>
         <ul>
           <li>{`Trancche: ${loan.tranche}`}</li>
           <li>{`Available: ${loan.available}`}</li>
@@ -12,6 +12,7 @@ const Loan = ({ loan }) => {
           <li>{`LTV: ${loan.ltv}`}</li>
           <li>{`Amount: ${loan.amount}`}</li>
         </ul>
+        <button className="invest-button">INVEST</button>
     </div>
   );
 }

@@ -1,3 +1,33 @@
 .App {
-  text-align: center;
+  height: 100vh;
+  padding: 5px 10vw;
+  background-color: rgb(194, 187, 187);
+}
+
+.loan-container {
+  position: relative;
+  background-color: white;
+  padding: 10px 20px 5px 20px;
+  margin: 20px 0;
+}
+
+.loan-title {
+  font-weight: 800;
+}
+
+.total-amount-available {
+  margin: auto;
+  width: fit-content;
+}
+
+.invest-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: yellow;
+  border-color: yellow;
+}
+
+ul {
+  margin: 5px 0;
 }
