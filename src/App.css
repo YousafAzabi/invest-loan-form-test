@@ -28,6 +28,10 @@
   border-color: yellow;
 }
 
+.dialog-invest-button {
+  background-color: yellow !important;
+}
+
 ul {
   margin: 5px 0;
 }
