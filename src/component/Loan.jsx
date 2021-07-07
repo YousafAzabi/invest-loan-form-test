@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import InvestDialog from './InvestDialog';
 
-const Loan = ({ loan, handleInvest }) => {
+const Loan = ({ loan, handleInvest, investedIn }) => {
   const [openDialog, setOpenDialog] = useState(false);
 
   const handleClick = () => {
@@ -20,6 +20,7 @@ const Loan = ({ loan, handleInvest }) => {
   return (
     <div className="loan-container">
       <div className="loan-title">{loan.title}</div>
+        {investedIn && <label className="invest-label">Invested</label>}
         <ul>
           <li>{`Trancche: ${loan.tranche}`}</li>
           <li>{`Available: ${loan.available}`}</li>

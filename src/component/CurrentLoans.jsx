@@ -4,6 +4,7 @@ import data from '../current-loans.json';
 
 const CurrentLoans = () => {
   const [loans, setLoans] = useState(data.loans);
+  const [investedInLoansIds, setInvestedInLoansIds] = useState([]);
 
   const handleInvest = (investAmount, loan) => {
     const remaining = Number(loan.available.split(',').join('')) - investAmount;
@@ -13,7 +14,10 @@ const CurrentLoans = () => {
       }
       return l
     });
+
+    // in real life scenario an api call should be called here to update DB in the server.
     setLoans(newLoans);
+    setInvestedInLoansIds([...investedInLoansIds, loan.id]);
   }
 
   const totalAvailable = loans
@@ -23,7 +27,13 @@ const CurrentLoans = () => {
   return (
     <div>
       <h1>Current Loan</h1>
-      {data.loans.map(loan => <Loan loan={loan} />)}
+      {loans.map(loan =>
+        <Loan
+          loan={loan}
+          handleInvest={handleInvest}
+          investedIn={investedInLoansIds.includes(loan.id)}
+        />
+      )}
       <div className="total-amount-available">
         Total Amount Available for Invesment:
         <strong>{` £${totalAvailable.toLocaleString()}`}</strong>
