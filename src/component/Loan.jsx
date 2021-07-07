@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import InvestDialog from './InvestDialog';
 
-const Loan = ({ loan }) => {
+const Loan = ({ loan, handleInvest }) => {
   const [openDialog, setOpenDialog] = useState(false);
 
   const handleClick = () => {
     setOpenDialog(true);
+  }
+
+  const handleDialogClose = () => {
+    setOpenDialog(false);
+  }
+
+  const handleDialogInvest = (investAmount) => {
+    handleDialogClose();
+    handleInvest(investAmount, loan);
   }
 
   return (
@@ -28,7 +37,8 @@ const Loan = ({ loan }) => {
         <InvestDialog
           open={openDialog}
           loan={loan}
-          handleClose={() => setOpenDialog(false)}
+          handleInvest={handleDialogInvest}
+          handleClose={handleDialogClose}
         />
     </div>
   );

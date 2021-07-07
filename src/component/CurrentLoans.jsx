@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Loan from './Loan';
 import data from '../current-loans.json';
 
 const CurrentLoans = () => {
-  const totalAvailable = data.loans
+  const [loans, setLoans] = useState(data.loans);
+
+  const handleInvest = (investAmount, loan) => {
+    const remaining = Number(loan.available.split(',').join('')) - investAmount;
+    const newLoans = loans.map(l => {
+      if (l.id === loan.id) {
+        return {...l, available: remaining.toLocaleString()}
+      }
+      return l
+    });
+    setLoans(newLoans);
+  }
+
+  const totalAvailable = loans
     .map(loan => Number(loan.available.split(',').join('')))
     .reduce((a, b) => a + b);
 
